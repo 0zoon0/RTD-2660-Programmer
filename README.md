@@ -50,3 +50,17 @@ Connect:
 
 You need to enable i2c interface in raspi-config (if not yet) and then reboot.
 Also you need to install smbus module for python (since programmer uses smbus to talk over i2c).
+
+##Adding Macronix 0xC22013 chip to the supported chips and manufactures in pyprog.py
+
+Usage of this script is as follows:
+python pyprog.py -r original.bin
+python pyprog.py -w new.bin
+Binaries can be taken from https://github.com/raparram/Programador-I2C-RTD2660-Rpi3/tree/master/PCB800099
+
+Steps I'm using to upload new firmware:
+1) Setup raspberry and connection as described in https://github.com/raparram/Programador-I2C-RTD2660-Rpi3
+2) Download needed firmware to raspberry from https://github.com/raparram/Programador-I2C-RTD2660-Rpi3/tree/master/PCB800099
+3) Save existing flash by running: python pyprog.py -r original.bin
+4) Flash with needed firmware by running: python pyprog.py -w new.bin
+5) Connect everything together and check the display works correctly.

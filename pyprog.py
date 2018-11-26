@@ -58,6 +58,7 @@ def FindChip (jedec_id):
 	, ("MX25L3205" , 0xC22016, 4 * 1024, 256, 64)
 	, ("MX25L6405" , 0xC22017, 8 * 1024, 256, 64)
 	, ("MX25L8005" , 0xC22014, 1024    , 256, 64)
+	, ("MX25L4005" , 0xC22013, 4 * 1024, 256, 64)
 	, #Microchip
     (  "SST25VF512", 0xBF4800, 64      , 256, 32)
 	, ("SST25VF032", 0xBF4A00, 4 * 1024, 256, 32)
@@ -89,8 +90,8 @@ def GetManufacturerName ( jedec_id ):
 
 def SetupChipCommands ( jedec_id, pr ):
     id = GetManufacturedId ( jedec_id )
-    if id==0xef:
-        print "Setup chip commands for Winbond..."
+    if id==0xef or id==0xc2:
+        print "Setup chip commands for Winbond & Macronix..."
         # These are the codes for Winbond
         pr.WriteReg ( 0x62, 0x6 )  #// Flash Write enable op code
         pr.WriteReg ( 0x63, 0x50 ) #// Flash Write register op code
